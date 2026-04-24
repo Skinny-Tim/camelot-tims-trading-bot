@@ -4,7 +4,7 @@
   "_updatedBy": "backtest-agent-v3",
   "_label": "ADX-25",
   "4h": {
-    "minIndicators": 3,
+    "minIndicators": 4,
     "minScore": 3,
     "minStars": 1,
     "cooldown": 12,
@@ -26,13 +26,13 @@
     "volMultiplier": 1.5,
     "volWeight": 1,
     "trendWeight": 1,
-    "requireTrendAlignment": false,
+    "requireTrendAlignment": true,
     "antiTrendBlock": false,
     "requireMultiCandle": false,
     "requireADX": true,
-    "minADX": 25,
-    "requireVolume": false,
-    "reqVolMultiplier": 1.3
+    "minADX": 30,
+    "requireVolume": true,
+    "reqVolMultiplier": 2.0
   },
   "monthly": {
     "minIndicators": 2,
