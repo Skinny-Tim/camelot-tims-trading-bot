@@ -746,9 +746,9 @@ function generateSignals(candles, timeframe = 'monthly', kronosScore = 0, waveCo
         }
 
         // ── IMPULSE WAVE VERSTERKING ──
-        if (waveName === 'W1' && progress < 50) bullScore += 2;
+        if (waveName === 'W1' && progress < 50) bullScore += 1;
         if (waveName === 'W3' && progress < 50) bullScore += 4;
-        if (waveName === 'W5' && progress < 30) bullScore += 2;
+        if (waveName === 'W5' && progress < 30) bullScore += 1;
       }
     }
 
