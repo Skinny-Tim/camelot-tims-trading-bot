@@ -105,7 +105,6 @@ const TOKENS = [
   { symbol: 'ETHUSDT',  short: 'ETH',  market: 'ETH-EUR' },
   { symbol: 'SOLUSDT',  short: 'SOL',  market: 'SOL-EUR' },
   { symbol: 'RENDERUSDT',  short: 'RENDER',  market: 'RENDER-EUR' },
-  { symbol: 'AKTUSDT',  short: 'AKT',  market: 'AKT-EUR' },
   { symbol: 'BNBUSDT',  short: 'BNB',  market: 'BNB-EUR' },
   { symbol: 'HBARUSDT', short: 'HBAR', market: 'HBAR-EUR' },
   { symbol: 'XRPUSDT',  short: 'XRP',  market: 'XRP-EUR' },
