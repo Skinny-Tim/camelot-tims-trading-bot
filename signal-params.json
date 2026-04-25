@@ -30,7 +30,7 @@
     "antiTrendBlock": false,
     "requireMultiCandle": false,
     "requireADX": true,
-    "minADX": 25,
+    "minADX": 23,
     "requireVolume": true,
     "reqVolMultiplier": 1.3
   },
