@@ -107,6 +107,26 @@
     {
       "src": "logo.png",
       "use": "@vercel/static"
+    },
+    {
+      "src": "trade-log.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "config.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/trade-log.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/config.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/claude-analyzer.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -223,6 +243,26 @@
       "dest": "/camelot.html"
     },
     {
+      "src": "/trade-log",
+      "dest": "/trade-log.html"
+    },
+    {
+      "src": "/config",
+      "dest": "/config.html"
+    },
+    {
+      "src": "/api/trade-log",
+      "dest": "/api/trade-log.js"
+    },
+    {
+      "src": "/api/config",
+      "dest": "/api/config.js"
+    },
+    {
+      "src": "/api/claude-analyzer",
+      "dest": "/api/claude-analyzer.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
@@ -243,6 +283,10 @@
     {
       "path": "/api/audit?action=archive",
       "schedule": "55 23 * * *"
+    },
+    {
+      "path": "/api/paper-engine",
+      "schedule": "*/10 * * * *"
     }
   ]
 }

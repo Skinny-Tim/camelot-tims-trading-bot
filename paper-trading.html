@@ -1171,7 +1171,11 @@
 </script>
 
 <div class="dashboard">
-  <a href="/" class="back-link">&larr; Terug naar Dashboard</a>
+  <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+    <a href="/" class="back-link">&larr; Terug naar Dashboard</a>
+    <a href="/trade-log" style="display:inline-flex; align-items:center; gap:5px; padding:6px 13px; background:#002035; color:#D4AF37; border-radius:7px; font-size:12px; font-weight:700; text-decoration:none; border:1px solid rgba(212,175,55,0.3);">📋 Trade Log</a>
+    <a href="/config" style="display:inline-flex; align-items:center; gap:5px; padding:6px 13px; background:#002035; color:#7EA8C4; border-radius:7px; font-size:12px; font-weight:700; text-decoration:none; border:1px solid rgba(126,168,196,0.2);">⚙ Config</a>
+  </div>
 
   <!-- Top Bar -->
   <div class="top-bar">
@@ -2702,9 +2706,12 @@ function updatePositions() {
     //   Camelot 4H (Elliott Wave) als Kronos signalen — onderscheid via meta.source / bot.
     //   Kronos badge gebruikt oude blauwe stijl ("K"); Elliott badge toont "EW".
     const isKronosSrc = (pos.meta && pos.meta.source === 'kronos') || pos.bot === 'paper_kronos' || pos._src === 'K';
+    const isEWSrc = (pos.meta && pos.meta.source === 'elliott') || pos.bot === 'camelot' || pos._src === 'EW';
     const srcBadgeOpen = isKronosSrc
       ? '<span title="Kronos AI signal" style="display:inline-block; padding:1px 5px; margin-right:4px; border-radius:3px; background:#1e3a5f; color:#7cc6ff; font-size:9px; font-weight:700; vertical-align:middle;">K</span>'
-      : '<span title="Elliott Wave signal (Camelot 4H)" style="display:inline-block; padding:1px 5px; margin-right:4px; border-radius:3px; background:#012D4C; color:#fff; font-size:9px; font-weight:700; vertical-align:middle;">EW</span>';
+      : isEWSrc
+      ? '<span title="Elliott Wave signal (Camelot 4H)" style="display:inline-block; padding:1px 5px; margin-right:4px; border-radius:3px; background:#012D4C; color:#fff; font-size:9px; font-weight:700; vertical-align:middle;">EW</span>'
+      : '';
     html += `<tr class="data-row">
       <td>${srcBadgeOpen}<span class="token-icon ${getIconClass(pos.token)}">${pos.token[0]}</span> ${pos.token}</td>
       <td><span class="badge ${pos.side === 'LONG' ? 'badge-long' : 'badge-short'}">${pos.side}</span></td>
@@ -3072,9 +3079,12 @@ function updateTradeLog() {
     // FIX 2026-04 #9: per-trade bron-detectie consistent met open posities.
     // Kronos = blauwe "K", Elliott Wave = navy "EW".
     const tIsKronos = t._src === 'K' || (t.meta && t.meta.source === 'kronos') || t.bot === 'paper_kronos';
+    const tIsEW = t._src === 'EW' || (t.meta && t.meta.source === 'elliott') || t.bot === 'camelot';
     const srcBadge = tIsKronos
       ? '<span title="Kronos AI signal" style="display:inline-block; padding:1px 5px; margin-right:4px; border-radius:3px; background:#1e3a5f; color:#7cc6ff; font-size:9px; font-weight:700; vertical-align:middle;">K</span>'
-      : '<span title="Elliott Wave signal (Camelot 4H)" style="display:inline-block; padding:1px 5px; margin-right:4px; border-radius:3px; background:#012D4C; color:#fff; font-size:9px; font-weight:700; vertical-align:middle;">EW</span>';
+      : tIsEW
+      ? '<span title="Elliott Wave signal (Camelot 4H)" style="display:inline-block; padding:1px 5px; margin-right:4px; border-radius:3px; background:#012D4C; color:#fff; font-size:9px; font-weight:700; vertical-align:middle;">EW</span>'
+      : '';
     html += `<tr class="data-row">
       <td style="font-size:11px;">${formatDate(t.closeTime)}</td>
       <td>${srcBadge}<strong>${t.token}</strong> ${'\u2605'.repeat(t.stars || 0)}</td>
